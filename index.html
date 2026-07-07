@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دعوة زفاف غالية</title>
+    <style>
+        body {
+            background-color: #111111;
+            color: #e5c158;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            border: 2px solid #e5c158;
+            padding: 30px;
+            border-radius: 15px;
+            background-color: #1a1a1a;
+            box-shadow: 0px 0px 20px rgba(229, 193, 88, 0.2);
+        }
+        h1, h2 {
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        .gold-text {
+            color: #e5c158;
+            font-weight: bold;
+        }
+        .details {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin: 25px 0;
+            color: #dddddd;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #e5c158, transparent);
+            margin: 30px 0;
+        }
+        /* تصميم العداد التنازلي */
+        .countdown-title {
+            font-size: 1.3rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .time-box {
+            background-color: #262626;
+            border: 1px solid #e5c158;
+            padding: 15px;
+            border-radius: 8px;
+            min-width: 70px;
+        }
+        .time-box span {
+            display: block;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #e5c158;
+        }
+        .time-box label {
+            font-size: 0.9rem;
+            color: #aaaaaa;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>دعوة زفاف</h1>
+    <p class="gold-text">لا تكتمل فرحتنا إلا بحضوركم ومشاركتكم للحظاتنا السعيدة</p>
+    
+    <div class="details">
+        <p>يسرني ويشرفني دعوتكم لحضور حفل زفافي وتناول طعام العشاء بمشيئة الله تعالى.</p>
+        <p>📅 <strong>التاريخ:</strong> الخميس 27 جويلية 2026</p>
+        <p>📍 <strong>المكان:</strong> قاعة الحفلات - دعاء</p>
+        <p>🕗 <strong>الاستقبال:</strong> ابتداءً من الساعة 20:00</p>
+    </div>
+
+    <p class="gold-text" style="font-size: 1.3rem;">أفراحنا تزهو وتزداد بحضوركم</p>
+    <p>الداعي: خنتوت أيمن</p>
+
+    <hr>
+
+    <!-- العداد التنازلي -->
+    <div class="countdown-title">الوقت المتبقي على ليلة العمر:</div>
+    <div class="countdown">
+        <div class="time-box">
+            <span id="days">00</span>
+            <label>يوم</label>
+        </div>
+        <div class="time-box">
+            <span id="hours">00</span>
+            <label>ساعة</label>
+        </div>
+        <div class="time-box">
+            <span id="minutes">00</span>
+            <label>دقيقة</label>
+        </div>
+        <div class="time-box">
+            <span id="seconds">00</span>
+            <label>ثانية</label>
+        </div>
+    </div>
+</div>
+
+<script>
+    // تحديد تاريخ الزفاف: 27 جويلية 2026 الساعة 8 مساءً
+    const weddingDate = new Date("July 27, 2026 20:00:00").getTime();
+
+    const timer = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = weddingDate - now;
+
+        // حساب الأيام والساعات والدقائق والثواني
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // عرض النتيجة في العناصر المحددة
+        document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+        document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+        document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+        document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+
+        // إذا انتهى الوقت
+        if (distance < 0) {
+            clearInterval(timer);
+            document.querySelector(".countdown").innerHTML = "<h3 style='color: #e5c158;'>دامت أفراحكم بالخير والبركة!</h3>";
+        }
+    }, 1000);
+</script>
+
+</body>
+</html>
